@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The interactive timeline and schedule of events for Luke and Titin's wedding day.">
+  <title>The Itinerary — Luke & Titin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">LUKE<span>&</span>TITIN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="story.html" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="itinerary.html" class="active" data-i18n="nav.itinerary">Itinerary</a></li>
+          <li><a href="concierge.html" data-i18n="nav.concierge">Concierge</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Photo Hub</a></li>
+          <li><button class="lang-toggle" id="langToggleBtn">ID</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <div class="section-title-container fade-in visible">
+        <p class="section-subtitle" data-i18n="itinerary.subtitle">The Schedule of Events</p>
+        <h1 class="section-title" data-i18n="itinerary.title">The Golden Thread</h1>
+        <p style="text-align: center; color: var(--color-gold-light); margin-top: 1rem; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;" data-i18n="itinerary.day">
+          Sunday, 22nd August 2027
+        </p>
+      </div>
+
+      <!-- Vertical Interactive Timeline -->
+      <div class="timeline-wrapper">
+        
+        <!-- The visual threads -->
+        <div class="timeline-thread"></div>
+        <div class="timeline-progress-thread" id="timelineProgressThread"></div>
+
+        <!-- 15:30 - Arrival -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-node"></div>
+          <div class="timeline-time" data-i18n="itinerary.time.1530">15:30</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="itinerary.title.1530">The Gathering</h3>
+            <p class="timeline-desc" data-i18n="itinerary.desc.1530">
+              Guests are cordially invited to arrive at The Anvaya Bali Beach Resort. Enjoy light refreshments and the gentle sea breeze as we prepare for the ceremony.
+            </p>
+          </div>
+        </div>
+
+        <!-- 16:00 - Ceremony -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-node"></div>
+          <div class="timeline-time" data-i18n="itinerary.time.1600">16:00</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="itinerary.title.1600">The Sacred Vows</h3>
+            <p class="timeline-desc" data-i18n="itinerary.desc.1600">
+              The marriage ceremony will commence on the beachfront lawn. Please join us as we pledge our lifetime devotion under the tropical sky.
+            </p>
+          </div>
+        </div>
+
+        <!-- 18:30 - Reception -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-node"></div>
+          <div class="timeline-time" data-i18n="itinerary.time.1830">18:30</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title" data-i18n="itinerary.title.1830">The Grand Reception</h3>
+            <p class="timeline-desc" data-i18n="itinerary.desc.1830">
+              An elegant evening of fine dining, heartfelt speeches, and classical Indonesian and contemporary music under the stars.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-names">Luke & Titin</p>
+    <p class="footer-details" data-i18n="hero.location">The Anvaya Bali Beach Resort, Kuta, Bali</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copyright">&copy; 2027 Luke & Titin. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The scrollytelling journey of how Luke and Titin met, fell in love, and got engaged.">
+  <title>Our Story — Luke & Titin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">LUKE<span>&</span>TITIN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="story.html" class="active" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="itinerary.html" data-i18n="nav.itinerary">Itinerary</a></li>
+          <li><a href="concierge.html" data-i18n="nav.concierge">Concierge</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Photo Hub</a></li>
+          <li><button class="lang-toggle" id="langToggleBtn">ID</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <div class="section-title-container fade-in visible">
+        <p class="section-subtitle" data-i18n="story.subtitle">A Chronicle of Devotion</p>
+        <h1 class="section-title" data-i18n="story.title">Our Journey</h1>
+      </div>
+
+      <!-- Scrollytelling Progress Indicator (Left side, desktop only) -->
+      <div class="story-indicator-wrapper">
+        <div class="story-indicator-dot active" data-target="chapter1">
+          <span class="story-indicator-label" data-i18n="story.c1.title">The Beginning</span>
+        </div>
+        <div class="story-indicator-dot" data-target="chapter2">
+          <span class="story-indicator-label" data-i18n="story.c2.title">Two Cultures, One Heart</span>
+        </div>
+        <div class="story-indicator-dot" data-target="chapter3">
+          <span class="story-indicator-label" data-i18n="story.c3.title">The Proposal</span>
+        </div>
+      </div>
+
+      <!-- Story Scroll Sections -->
+      <div class="story-scroll-container">
+        
+        <!-- Chapter 1: The Beginning -->
+        <div class="story-chapter fade-in" id="chapter1">
+          <div class="story-img-container">
+            <img src="assets/story_beginning.jpg" alt="The Beginning of Luke and Titin's Story">
+          </div>
+          <div class="story-text-container">
+            <p class="chapter-number" data-i18n="story.c1.num">Chapter I</p>
+            <h2 class="chapter-title" data-i18n="story.c1.title">The Beginning</h2>
+            <p class="chapter-desc" data-i18n="story.c1.desc">
+              In the vibrant tapestry of London, two distinct paths aligned. Luke, hailing from the green pastures of the United Kingdom, met Titin, whose roots run deep in the rich heritage of Java, Indonesia. What began as a chance encounter blossomed into an intellectual and spiritual connection, transcending borders and languages. In the quiet moments of shared aspirations, they discovered a mutual understanding that would become the cornerstone of their future.
+            </p>
+          </div>
+        </div>
+
+        <!-- Chapter 2: Two Cultures, One Heart -->
+        <div class="story-chapter fade-in" id="chapter2">
+          <div class="story-img-container">
+            <img src="assets/story_cultures.jpg" alt="Union of British and Indonesian Cultures">
+          </div>
+          <div class="story-text-container">
+            <p class="chapter-number" data-i18n="story.c2.num">Chapter II</p>
+            <h2 class="chapter-title" data-i18n="story.c2.title">Two Cultures, One Heart</h2>
+            <p class="chapter-desc" data-i18n="story.c2.desc">
+              Their love story is a beautiful testament to the bridge between two worlds. Navigating the delicate nuances of British formality and Indonesian warmth, they found a harmonious balance. Celebrating each other's heritage, they created a unique shared language built on respect, laughter, and mutual admiration. From the historic streets of England to the emerald landscapes of Indonesia, their bond grew stronger with every journey, merging two distinct backgrounds into a single, unified path forward.
+            </p>
+          </div>
+        </div>
+
+        <!-- Chapter 3: The Proposal -->
+        <div class="story-chapter fade-in" id="chapter3">
+          <div class="story-img-container">
+            <img src="assets/story_proposal.jpg" alt="Luke Proposing to Titin in Bali">
+          </div>
+          <div class="story-text-container">
+            <p class="chapter-number" data-i18n="story.c3.num">Chapter III</p>
+            <h2 class="chapter-title" data-i18n="story.c3.title">The Proposal</h2>
+            <p class="chapter-desc" data-i18n="story.c3.desc">
+              Against the breathtaking backdrop of a Balinese sunset, with the gentle rhythm of the Indian Ocean as witness, Luke asked Titin to embark on a lifelong journey together. Surrounded by the timeless beauty of the island, Titin answered with a resounding affirmation. The proposal marked not just a promise of marriage, but a solemn vow to cherish, support, and inspire one another for all the years to come.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-names">Luke & Titin</p>
+    <p class="footer-details" data-i18n="hero.location">The Anvaya Bali Beach Resort, Kuta, Bali</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copyright">&copy; 2027 Luke & Titin. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

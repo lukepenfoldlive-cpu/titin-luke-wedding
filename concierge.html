@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Concierge providing flight, visa (e-VoA), and travel guidelines for Australian guests.">
+  <title>Digital Concierge — Luke & Titin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">LUKE<span>&</span>TITIN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="story.html" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="itinerary.html" data-i18n="nav.itinerary">Itinerary</a></li>
+          <li><a href="concierge.html" class="active" data-i18n="nav.concierge">Concierge</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Photo Hub</a></li>
+          <li><button class="lang-toggle" id="langToggleBtn">ID</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <div class="section-title-container fade-in visible">
+        <p class="section-subtitle" data-i18n="concierge.subtitle">Travel Support & Information</p>
+        <h1 class="section-title" data-i18n="concierge.title">Digital Concierge</h1>
+      </div>
+
+      <div class="concierge-grid">
+        <!-- Intro Card -->
+        <div class="glass-panel fade-in visible" style="height: 100%;">
+          <div class="concierge-intro">
+            <p data-i18n="concierge.intro" style="font-size: 1.05rem; line-height: 1.8;">
+              To ensure your journey from Australia to Bali is as seamless and luxurious as possible, we have compiled essential travel protocols and visa requirements below. Please review these details prior to your departure.
+            </p>
+            <div class="footer-divider" style="margin: 2rem 0; max-width: 100px; text-align: left;"></div>
+            <p style="font-size: 0.85rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 2px;">
+              Need further assistance?
+            </p>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">
+              Our dedicated wedding planning team is available to assist you with flight coordination or special requests.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion Info Panels -->
+        <div class="concierge-accordion fade-in visible">
+          
+          <!-- Visa Accordion -->
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <span class="accordion-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-gold);">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span data-i18n="concierge.visa.title">Visa Regulations (e-VoA)</span>
+              </span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p data-i18n="concierge.visa.content">
+                  All Australian passport holders entering Indonesia for tourism require a Visa on Arrival (VoA). We strongly advise applying for the <strong>electronic Visa on Arrival (e-VoA)</strong> online via the official Indonesian Immigration portal at least 14 days prior to travel. This permits a stay of up to 30 days and allows you to bypass airport queues.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customs Accordion -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-gold);">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span data-i18n="concierge.customs.title">Electronic Customs Declaration</span>
+              </span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p data-i18n="concierge.customs.content">
+                  Indonesia mandates that all arriving passengers complete an <strong>Electronic Customs Declaration (e-CD)</strong>. You may fill this form online up to 3 days prior to your flight. Upon completion, a QR code will be generated, which must be presented to customs officials upon arrival in Bali.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flights Accordion -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-gold);">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                <span data-i18n="concierge.flights.title">Flight Recommendations</span>
+              </span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p data-i18n="concierge.flights.content">
+                  Direct flights to Ngurah Rai International Airport (DPS) in Bali depart daily from major Australian cities, including Sydney, Melbourne, Brisbane, and Perth. Prominent carriers include Qantas, Virgin Australia, and Garuda Indonesia. We recommend securing your flights 6 to 9 months in advance for premium availability.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Venue / Resort Accordion -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-gold);">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span data-i18n="concierge.resort.title">Accommodation & Venue</span>
+              </span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner-content">
+                <p data-i18n="concierge.resort.content">
+                  The wedding proceedings will take place at <strong>The Anvaya Bali Beach Resort</strong>, a five-star luxury beachfront sanctuary in Kuta, Bali. We have secured a select allocation of suites and villas at preferential rates for our guests. Please contact the concierge desk with our booking reference code for reservation assistance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-names">Luke & Titin</p>
+    <p class="footer-details" data-i18n="hero.location">The Anvaya Bali Beach Resort, Kuta, Bali</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copyright">&copy; 2027 Luke & Titin. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

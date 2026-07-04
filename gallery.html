@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Live Photo Hub for Luke and Titin's wedding. Guests can view and upload moments live.">
+  <title>Live Photo Hub — Luke & Titin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">LUKE<span>&</span>TITIN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="story.html" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="itinerary.html" data-i18n="nav.itinerary">Itinerary</a></li>
+          <li><a href="concierge.html" data-i18n="nav.concierge">Concierge</a></li>
+          <li><a href="gallery.html" class="active" data-i18n="nav.gallery">Photo Hub</a></li>
+          <li><button class="lang-toggle" id="langToggleBtn">ID</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="photo-hub-layout">
+      <div class="section-title-container fade-in visible">
+        <p class="section-subtitle" data-i18n="gallery.subtitle">Preserving the Moments</p>
+        <h1 class="section-title" data-i18n="gallery.title">Live Photo Hub</h1>
+      </div>
+
+      <!-- Upload Widget Card -->
+      <div class="glass-panel upload-widget-card fade-in visible">
+        <h2 class="chapter-title" style="font-size: 1.6rem; margin-bottom: 1rem;" data-i18n="gallery.upload.title">Upload a Moment</h2>
+        
+        <!-- Drag & Drop Zone -->
+        <div class="upload-dropzone" id="uploadDropzone">
+          <svg class="upload-icon-svg" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+          </svg>
+          <p class="upload-prompt" data-i18n="gallery.upload.desc">Share your perspective of our special day. Drag and drop your photographs here, or browse your local storage.</p>
+          <span class="btn-gold" style="padding: 8px 20px; font-size: 0.75rem; margin-top: 1rem;" data-i18n="gallery.upload.btn">Choose File</span>
+          <p class="upload-constraints" style="margin-top: 1rem;" data-i18n="gallery.upload.error.size">Image size must be less than 5MB.</p>
+          <input type="file" id="fileInput" class="file-input" accept="image/*">
+        </div>
+
+        <!-- Preview State -->
+        <div class="upload-preview-container" id="previewContainer">
+          <div class="preview-details">
+            <img id="previewImg" class="preview-image" src="" alt="Selected Preview">
+            <div class="preview-metadata">
+              <p id="previewName" class="preview-name"></p>
+              <p id="previewSize" class="preview-size"></p>
+            </div>
+            <button id="removeFileBtn" class="btn-remove-file">Remove</button>
+          </div>
+
+          <!-- Metadata input parameters -->
+          <input type="text" id="uploadCaption" class="upload-caption-input" placeholder="Enter a short caption..." data-i18n="gallery.upload.caption">
+          <input type="text" id="uploaderName" class="upload-caption-input" placeholder="Your Name" data-i18n="gallery.upload.name">
+
+          <!-- Simulated progress indicators -->
+          <div class="upload-progress-wrapper" id="progressWrapper">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText" data-i18n="gallery.uploading">Uploading photograph...</span>
+          </div>
+
+          <button id="submitUploadBtn" class="btn-gold btn-submit-upload" data-i18n="gallery.upload.submit">Submit to Gallery</button>
+        </div>
+
+        <!-- Success Message -->
+        <div class="upload-success-msg" id="successMsg" data-i18n="gallery.upload.success">
+          Your photograph has been successfully uploaded and added to the Live Gallery.
+        </div>
+      </div>
+
+      <!-- Responsive Masonry Gallery Grid -->
+      <div class="gallery-wrapper fade-in visible">
+        <div class="masonry-grid" id="masonryGrid">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-names">Luke & Titin</p>
+    <p class="footer-details" data-i18n="hero.location">The Anvaya Bali Beach Resort, Kuta, Bali</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copyright">&copy; 2027 Luke & Titin. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
