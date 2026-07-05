@@ -1,0 +1,20 @@
+{
+  "name": "titin-luke-wedding",
+  "version": "1.0.0",
+  "description": "Bilingual wedding website for Luke Penfold & Titin Mubarokah",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx browser-sync start --server --files '**/*'"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3"
+  },
+  "keywords": [
+    "wedding",
+    "website",
+    "firebase",
+    "realtime"
+  ],
+  "author": "Luke Penfold",
+  "license": "ISC"
+}
