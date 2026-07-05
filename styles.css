@@ -1,19 +1,20 @@
 /* ==========================================
-   DESIGN SYSTEM & VARIABLES (Modern Tropical Noir)
+   DESIGN SYSTEM & VARIABLES (Balinese Sunset Blush & Gold)
    ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;300;400;500;600&display=swap');
 
 :root {
-  --color-bg-dark: #041214;       /* Deepest tropical night */
-  --color-bg-teal: #0A2F35;       /* Core deep teal */
-  --color-teal-accent: #114E57;   /* Lighter teal for hover and highlights */
-  --color-gold: #D4AF37;          /* Classic gold */
-  --color-gold-dark: #AA7C11;     /* Shaded gold */
-  --color-gold-light: #F3E5AB;    /* Soft glowing gold */
-  --color-text-light: #F4F6F6;    /* Off-white */
-  --color-text-muted: #9BB2B5;    /* Sophisticated muted teal-grey */
-  --color-glass-bg: rgba(10, 47, 53, 0.4);
-  --color-glass-border: rgba(212, 175, 55, 0.2);
+  --color-bg-main: #FAF5EF;        /* Warm sand / cream base */
+  --color-bg-surface: #F5EAE1;     /* Soft warm peach-sand */
+  --color-accent-blush: #ECC7C0;   /* Balinese sunset blush rose */
+  --color-gold: #C5A028;           /* Elegant champagne gold */
+  --color-gold-dark: #8E7012;      /* Shaded gold for readability */
+  --color-gold-light: #F3E5AB;     /* Glowing champagne gold */
+  --color-text-main: #2E2220;      /* Deep espresso charcoal */
+  --color-text-muted: #7A6663;     /* Muted warm cocoa / taupe */
+  --color-text-inverse: #FAF5EF;   /* Light text for dark overlays */
+  --color-glass-bg: rgba(255, 255, 255, 0.55);
+  --color-glass-border: rgba(197, 160, 40, 0.25);
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Montserrat', sans-serif;
   --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -30,15 +31,15 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-main);
   font-family: var(--font-sans);
-  color: var(--color-text-light);
+  color: var(--color-text-main);
 }
 
 body {
   overflow-x: hidden;
   line-height: 1.6;
-  background-image: radial-gradient(circle at 50% 0%, var(--color-bg-teal) 0%, var(--color-bg-dark) 70%);
+  background-image: radial-gradient(circle at 50% 0%, var(--color-bg-surface) 0%, var(--color-bg-main) 75%);
   background-attachment: fixed;
 }
 
@@ -49,7 +50,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(4, 18, 20, 0.85);
+  background: rgba(250, 245, 239, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-glass-border);
@@ -69,14 +70,14 @@ header {
   font-family: var(--font-serif);
   font-size: 1.8rem;
   font-weight: 300;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   text-decoration: none;
   letter-spacing: 4px;
 }
 
 .logo span {
   font-size: 1.2rem;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   margin: 0 5px;
 }
 
@@ -89,9 +90,9 @@ header {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: var(--transition-smooth);
@@ -105,7 +106,7 @@ header {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 1.5px;
   background-color: var(--color-gold);
   transition: var(--transition-smooth);
 }
@@ -117,7 +118,7 @@ header {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
 }
 
 /* Mobile Menu Button */
@@ -132,7 +133,7 @@ header {
   display: block;
   width: 25px;
   height: 2px;
-  background-color: var(--color-text-light);
+  background-color: var(--color-text-main);
   margin: 5px 0;
   transition: var(--transition-smooth);
 }
@@ -142,10 +143,10 @@ header {
   background: transparent;
   border: 1px solid var(--color-gold);
   padding: 6px 14px;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
   border-radius: 20px;
   cursor: pointer;
@@ -154,8 +155,9 @@ header {
 
 .lang-toggle:hover {
   background: var(--color-gold);
-  color: var(--color-bg-dark);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  color: var(--color-text-inverse);
+  box-shadow: 0 4px 10px rgba(197, 160, 40, 0.25);
+  border-color: var(--color-gold);
 }
 
 /* ==========================================
@@ -181,7 +183,7 @@ section {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -190,13 +192,13 @@ section {
   font-size: 3rem;
   font-weight: 300;
   letter-spacing: 2px;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
 }
 
 /* Luxury buttons and inputs */
 .btn-gold {
   background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
-  color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
   border: none;
   padding: 12px 30px;
   font-family: var(--font-sans);
@@ -207,11 +209,12 @@ section {
   border-radius: 30px;
   cursor: pointer;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(197, 160, 40, 0.25);
   position: relative;
   overflow: hidden;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
 }
 
 .btn-gold::before {
@@ -232,18 +235,18 @@ section {
 }
 
 .btn-gold:hover {
-  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 6px 22px rgba(197, 160, 40, 0.4), 0 0 15px rgba(197, 160, 40, 0.15);
   transform: translateY(-3px);
 }
 
 .glass-panel {
   background: var(--color-glass-bg);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
   border: 1px solid var(--color-glass-border);
   border-radius: 16px;
   padding: 3rem;
-  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 35px rgba(138, 120, 102, 0.12);
 }
 
 /* Animations */
@@ -277,7 +280,7 @@ section {
   left: 0;
   width: 110%;
   height: 110%;
-  background: linear-gradient(180deg, rgba(4, 18, 20, 0.4) 0%, var(--color-bg-dark) 90%), 
+  background: linear-gradient(180deg, rgba(250, 245, 239, 0.2) 0%, var(--color-bg-main) 95%), 
               url('assets/hero_bg.jpg') no-repeat center center;
   background-size: cover;
   z-index: -1;
@@ -297,10 +300,10 @@ section {
   font-size: 5rem;
   font-weight: 300;
   letter-spacing: 4px;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
 }
 
 .hero-names span {
@@ -308,7 +311,7 @@ section {
   display: block;
   font-style: italic;
   font-family: var(--font-serif);
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   margin: 10px 0;
 }
 
@@ -316,9 +319,9 @@ section {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 5px;
-  color: var(--color-gold-light);
+  color: var(--color-text-muted);
   margin-bottom: 3rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
 }
 
 /* Countdown Clock */
@@ -330,21 +333,21 @@ section {
 }
 
 .countdown-box {
-  background: rgba(10, 47, 53, 0.35);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--color-glass-border);
   border-radius: 12px;
   min-width: 100px;
   padding: 1.5rem 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(138, 120, 102, 0.08);
 }
 
 .countdown-number {
   font-family: var(--font-serif);
   font-size: 2.8rem;
   font-weight: 300;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   line-height: 1;
   margin-bottom: 0.2rem;
 }
@@ -354,6 +357,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--color-text-muted);
+  font-weight: 500;
 }
 
 /* ==========================================
@@ -381,7 +385,7 @@ section {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--color-bg-teal);
+  background: var(--color-bg-surface);
   border: 1px solid var(--color-gold);
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -389,9 +393,9 @@ section {
 }
 
 .story-indicator-dot.active {
-  background: var(--color-gold);
+  background: var(--color-gold-dark);
   transform: scale(1.5);
-  box-shadow: 0 0 10px var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold);
 }
 
 .story-indicator-label {
@@ -411,6 +415,7 @@ section {
 .story-indicator-dot:hover .story-indicator-label,
 .story-indicator-dot.active .story-indicator-label {
   opacity: 1;
+  color: var(--color-text-main);
 }
 
 .story-chapter {
@@ -432,7 +437,7 @@ section {
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--color-glass-border);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 35px rgba(138, 120, 102, 0.15);
   height: 400px;
 }
 
@@ -455,9 +460,9 @@ section {
   font-size: 0.8rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .chapter-title {
@@ -467,12 +472,13 @@ section {
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
   line-height: 1.2;
+  color: var(--color-text-main);
 }
 
 .chapter-desc {
   color: var(--color-text-muted);
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 1.85;
   text-align: justify;
 }
 
@@ -494,10 +500,10 @@ section {
   bottom: 0;
   width: 2px;
   background: linear-gradient(to bottom, 
-              rgba(212, 175, 55, 0.1) 0%, 
-              var(--color-gold) 15%, 
-              var(--color-gold) 85%, 
-              rgba(212, 175, 55, 0.1) 100%);
+              rgba(197, 160, 40, 0.1) 0%, 
+              var(--color-accent-blush) 15%, 
+              var(--color-accent-blush) 85%, 
+              rgba(197, 160, 40, 0.1) 100%);
   transform: translateX(-50%);
   z-index: 1;
 }
@@ -512,7 +518,7 @@ section {
   height: 0;
   z-index: 2;
   transition: height 0.5s ease-out;
-  box-shadow: 0 0 10px var(--color-gold-light);
+  box-shadow: 0 0 8px var(--color-gold);
 }
 
 .timeline-item {
@@ -540,7 +546,7 @@ section {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--color-bg-dark);
+  background: var(--color-bg-main);
   border: 2px solid var(--color-gold);
   z-index: 10;
   transition: var(--transition-smooth);
@@ -555,8 +561,8 @@ section {
 }
 
 .timeline-item.active .timeline-node {
-  background: var(--color-gold);
-  box-shadow: 0 0 15px var(--color-gold-light), 0 0 5px var(--color-gold);
+  background: var(--color-gold-dark);
+  box-shadow: 0 0 10px var(--color-gold), 0 0 5px var(--color-accent-blush);
   transform: scale(1.3);
 }
 
@@ -564,7 +570,7 @@ section {
   font-family: var(--font-serif);
   font-size: 2.2rem;
   font-weight: 300;
-  color: var(--color-gold-light);
+  color: var(--color-gold-dark);
   line-height: 1;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
@@ -577,7 +583,7 @@ section {
   border: 1px solid var(--color-glass-border);
   padding: 1.8rem;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 25px rgba(138, 120, 102, 0.06);
   transition: var(--transition-smooth);
   cursor: pointer;
 }
@@ -585,14 +591,14 @@ section {
 .timeline-content:hover {
   transform: translateY(-5px);
   border-color: var(--color-gold);
-  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 12px 30px rgba(197, 160, 40, 0.12);
 }
 
 .timeline-title {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-weight: 400;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   margin-bottom: 0.6rem;
   letter-spacing: 1px;
 }
@@ -647,7 +653,7 @@ section {
 }
 
 .accordion-header:hover {
-  background: rgba(10, 47, 53, 0.6);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .accordion-title {
@@ -655,16 +661,17 @@ section {
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 1px;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .accordion-icon {
-  font-size: 1rem;
-  color: var(--color-gold);
+  font-size: 1.1rem;
+  color: var(--color-gold-dark);
   transition: transform 0.4s ease;
+  font-weight: 600;
 }
 
 .accordion-content {
@@ -682,7 +689,8 @@ section {
 }
 
 .accordion-inner-content strong {
-  color: var(--color-gold-light);
+  color: var(--color-text-main);
+  font-weight: 600;
 }
 
 .accordion-inner-content ul {
@@ -696,6 +704,7 @@ section {
 
 .accordion-item.active {
   border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .accordion-item.active .accordion-icon {
@@ -728,22 +737,22 @@ section {
   padding: 3rem 2rem;
   cursor: pointer;
   transition: var(--transition-smooth);
-  background: rgba(10, 47, 53, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   margin-bottom: 1.5rem;
   position: relative;
 }
 
 .upload-dropzone:hover,
 .upload-dropzone.dragover {
-  border-color: var(--color-gold);
-  background: rgba(10, 47, 53, 0.5);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold-dark);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(197, 160, 40, 0.1);
 }
 
 .upload-icon-svg {
   width: 48px;
   height: 48px;
-  fill: var(--color-gold);
+  fill: var(--color-gold-dark);
   margin-bottom: 1rem;
   transition: var(--transition-smooth);
 }
@@ -755,7 +764,7 @@ section {
 .upload-prompt {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   margin-bottom: 0.5rem;
 }
 
@@ -781,7 +790,7 @@ section {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(4, 18, 20, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   padding: 0.8rem;
   border-radius: 8px;
   border: 1px solid var(--color-glass-border);
@@ -806,6 +815,7 @@ section {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 250px;
+  color: var(--color-text-main);
 }
 
 .preview-size {
@@ -816,16 +826,18 @@ section {
 .btn-remove-file {
   background: transparent;
   border: none;
-  color: #ef4444;
+  color: #c2410c; /* Deep terracotta / red-orange */
   cursor: pointer;
   font-size: 0.75rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: var(--transition-smooth);
+  font-weight: 600;
 }
 
 .btn-remove-file:hover {
-  text-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+  text-shadow: 0 0 5px rgba(194, 65, 12, 0.2);
+  color: #ea580c;
 }
 
 .upload-progress-wrapper {
@@ -835,8 +847,8 @@ section {
 
 .progress-bar-bg {
   width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 5px;
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -844,7 +856,7 @@ section {
 .progress-bar-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(to right, var(--color-gold), var(--color-gold-light));
+  background: linear-gradient(to right, var(--color-gold), var(--color-accent-blush));
   transition: width 0.3s ease;
 }
 
@@ -857,11 +869,11 @@ section {
 
 .upload-caption-input {
   width: 100%;
-  background: rgba(4, 18, 20, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--color-glass-border);
   padding: 10px 15px;
   border-radius: 8px;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   font-family: var(--font-sans);
   font-size: 0.85rem;
   margin-top: 1rem;
@@ -870,8 +882,8 @@ section {
 }
 
 .upload-caption-input:focus {
-  border-color: var(--color-gold);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  border-color: var(--color-gold-dark);
+  box-shadow: 0 0 10px rgba(197, 160, 40, 0.15);
 }
 
 .btn-submit-upload {
@@ -881,14 +893,15 @@ section {
 
 .upload-success-msg {
   display: none;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
+  background: rgba(4, 120, 87, 0.08);
+  border: 1px solid rgba(4, 120, 87, 0.2);
+  color: #065f46;
   padding: 1rem;
   border-radius: 8px;
   font-size: 0.85rem;
   margin-top: 1rem;
   letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
 /* Responsive Masonry Gallery Grid */
@@ -909,7 +922,7 @@ section {
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--color-glass-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(138, 120, 102, 0.08);
   background: var(--color-glass-bg);
   transition: var(--transition-smooth);
   opacity: 0;
@@ -937,7 +950,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(4, 18, 20, 0.95) 0%, rgba(4, 18, 20, 0.4) 60%, rgba(4, 18, 20, 0) 100%);
+  background: linear-gradient(to top, rgba(46, 34, 32, 0.9) 0%, rgba(46, 34, 32, 0.4) 60%, rgba(46, 34, 32, 0) 100%);
   opacity: 0;
   transition: var(--transition-smooth);
   display: flex;
@@ -956,8 +969,8 @@ section {
 
 .gallery-caption {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--color-gold-light);
+  font-size: 1.15rem;
+  color: var(--color-text-inverse) !important; /* Forces off-white text over dark overlay */
   font-weight: 300;
   margin-bottom: 0.2rem;
   transform: translateY(10px);
@@ -968,7 +981,7 @@ section {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--color-text-muted);
+  color: var(--color-accent-blush) !important; /* Highlights uploader name with sunset rose blush */
   transform: translateY(10px);
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s;
 }
@@ -982,7 +995,7 @@ section {
    FOOTER
    ========================================== */
 footer {
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-surface);
   border-top: 1px solid var(--color-glass-border);
   padding: 4rem 2rem;
   text-align: center;
@@ -993,7 +1006,7 @@ footer {
   font-family: var(--font-serif);
   font-size: 2.2rem;
   font-weight: 300;
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
   letter-spacing: 3px;
   margin-bottom: 1rem;
 }
@@ -1016,7 +1029,8 @@ footer {
 .footer-copyright {
   font-size: 0.7rem;
   letter-spacing: 1px;
-  color: rgba(155, 178, 181, 0.5);
+  color: var(--color-text-muted);
+  opacity: 0.75;
 }
 
 /* ==========================================
@@ -1053,7 +1067,7 @@ footer {
     top: 60px;
     left: 0;
     width: 100%;
-    background: rgba(4, 18, 20, 0.95);
+    background: rgba(250, 245, 239, 0.97);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
