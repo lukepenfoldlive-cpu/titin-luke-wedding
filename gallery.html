@@ -50,7 +50,7 @@
           </svg>
           <p class="upload-prompt" data-i18n="gallery.upload.desc">Share your perspective of our special day. Drag and drop your photographs here, or browse your local storage.</p>
           <span class="btn-gold" style="padding: 8px 20px; font-size: 0.75rem; margin-top: 1rem;" data-i18n="gallery.upload.btn">Choose File</span>
-          <p class="upload-constraints" style="margin-top: 1rem;" data-i18n="gallery.upload.error.size">Image size must be less than 5MB.</p>
+          <p class="upload-constraints" style="margin-top: 1rem;" data-i18n="gallery.upload.error.size">Image size must be less than 2MB.</p>
           <input type="file" id="fileInput" class="file-input" accept="image/*">
         </div>
 
@@ -66,8 +66,8 @@
           </div>
 
           <!-- Metadata input parameters -->
-          <input type="text" id="uploadCaption" class="upload-caption-input" placeholder="Enter a short caption..." data-i18n="gallery.upload.caption">
-          <input type="text" id="uploaderName" class="upload-caption-input" placeholder="Your Name" data-i18n="gallery.upload.name">
+          <input type="text" id="uploadCaption" class="upload-caption-input" placeholder="Enter a short caption..." data-i18n="gallery.upload.caption" maxlength="80">
+          <input type="text" id="uploaderName" class="upload-caption-input" placeholder="Your Name" data-i18n="gallery.upload.name" maxlength="30">
 
           <!-- Simulated progress indicators -->
           <div class="upload-progress-wrapper" id="progressWrapper">

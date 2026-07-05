@@ -75,8 +75,8 @@ const translations = {
     "gallery.upload.caption": "Enter a short caption...",
     "gallery.upload.name": "Your Name",
     "gallery.upload.submit": "Submit to Gallery",
-    "gallery.upload.error.type": "Please select a valid image file (JPEG, PNG, WebP).",
-    "gallery.upload.error.size": "Image size must be less than 5MB.",
+    "gallery.upload.error.type": "Please select a valid image file (JPEG, PNG, WebP). SVGs are not permitted.",
+    "gallery.upload.error.size": "Image size must be less than 2MB.",
     "gallery.upload.success": "Your photograph has been successfully uploaded and added to the Live Gallery.",
     "gallery.uploading": "Uploading photograph...",
     "gallery.empty": "No images have been uploaded yet. Be the first to share a moment!",
@@ -162,8 +162,8 @@ const translations = {
     "gallery.upload.caption": "Tuliskan keterangan foto...",
     "gallery.upload.name": "Nama Anda",
     "gallery.upload.submit": "Kirim ke Galeri",
-    "gallery.upload.error.type": "Mohon pilih file gambar yang valid (JPEG, PNG, WebP).",
-    "gallery.upload.error.size": "Ukuran gambar harus kurang dari 5MB.",
+    "gallery.upload.error.type": "Mohon pilih file gambar yang valid (JPEG, PNG, WebP). SVG tidak diizinkan.",
+    "gallery.upload.error.size": "Ukuran gambar harus kurang dari 2MB.",
     "gallery.upload.success": "Foto Anda telah berhasil diunggah dan ditambahkan ke Galeri Live.",
     "gallery.uploading": "Mengunggah foto...",
     "gallery.empty": "Belum ada foto yang diunggah. Jadilah yang pertama membagikan momen!",
@@ -536,8 +536,16 @@ function initLivePhotoHub() {
   function renderGallery() {
     masonryGrid.innerHTML = "";
     
-    // 1. Get uploaded photos from localStorage
-    const savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
+    // 1. Get uploaded photos from localStorage with error safety
+    let savedPhotos = [];
+    try {
+      savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
+      if (!Array.isArray(savedPhotos)) savedPhotos = [];
+    } catch (e) {
+      console.error("Local storage data corrupt. Resetting uploads registry.", e);
+      savedPhotos = [];
+      localStorage.removeItem("uploaded_photos");
+    }
     const allPhotos = [...savedPhotos, ...presetPhotos];
     
     allPhotos.forEach(photo => {
@@ -610,12 +618,18 @@ function initLivePhotoHub() {
   }
 
   function handleFileSelect(file) {
-    // Validation
-    if (!file.type.match("image.*")) {
+    // Validation: Strict MIME verification (reject SVG script injection)
+    const allowedMimes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedMimes.includes(file.type)) {
       alert(translations[currentLang]["gallery.upload.error.type"]);
       return;
     }
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.name.toLowerCase().endsWith(".svg") || file.type === "image/svg+xml") {
+      alert(translations[currentLang]["gallery.upload.error.type"]);
+      return;
+    }
+    // Enforce strict 2MB limit to prevent storage exhaustion
+    if (file.size > 2 * 1024 * 1024) {
       alert(translations[currentLang]["gallery.upload.error.size"]);
       return;
     }
@@ -684,15 +698,37 @@ function initLivePhotoHub() {
   }
 
   function saveUploadedImageToLocalStorage(dataUrl, caption, uploader) {
-    const savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
-    
+    let savedPhotos = [];
+    try {
+      savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
+      if (!Array.isArray(savedPhotos)) savedPhotos = [];
+    } catch (e) {
+      savedPhotos = [];
+    }
+
+    // Limit custom photos stored in localStorage to 8 to prevent quota exhaustion
+    if (savedPhotos.length >= 8) {
+      savedPhotos.pop(); // Remove the oldest custom upload (FIFO)
+    }
+
+    // Input length constraint and trimming (truncation safeguard)
+    const safeCaption = (caption || "Shared Moment").trim().substring(0, 80);
+    const safeUploader = (uploader || "Anonymous Guest").trim().substring(0, 30);
+
     savedPhotos.unshift({
       url: dataUrl,
-      caption: caption,
-      uploader: `By ${uploader}`
+      caption: safeCaption,
+      uploader: `By ${safeUploader}`
     });
-    
-    localStorage.setItem("uploaded_photos", JSON.stringify(savedPhotos));
+
+    try {
+      localStorage.setItem("uploaded_photos", JSON.stringify(savedPhotos));
+    } catch (e) {
+      console.error("Local storage quota exceeded.", e);
+      alert(currentLang === "en" ? "Storage limit exceeded. Please remove some photos." : "Batas penyimpanan terlampaui. Silakan hapus beberapa foto.");
+      submitBtn.disabled = false;
+      return;
+    }
     
     // Show success
     setTimeout(() => {
