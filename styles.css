@@ -1087,6 +1087,7 @@ footer {
   }
   .menu-btn {
     display: block;
+    margin-left: auto;
   }
   
   /* Menu icon active state transformation */

@@ -90,7 +90,7 @@ const translations = {
     "gallery.u.uploader.4": "By James Henderson",
 
     // Wedding Party Page
-    "nav.party": "The Party",
+    "nav.party": "Wedding Party",
     "party.title": "The Wedding Party",
     "party.subtitle": "Our Closest Circle",
     "party.groomsmen": "Groom's Side",
@@ -886,6 +886,11 @@ function initWeddingParty() {
         // Slide in
         bioCard.style.opacity = 1;
         bioCard.style.transform = "translateY(0)";
+
+        // Smooth scroll to active bio panel on mobile/tablet viewports
+        if (window.innerWidth <= 992) {
+          bioCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
       }, 200);
     });
   });
