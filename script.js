@@ -1,4 +1,25 @@
 /* ==========================================
+   FIREBASE REAL-TIME CLOUD SERVICE
+   ========================================== */
+let db = null;
+let storage = null;
+
+if (typeof firebase !== "undefined") {
+  const firebaseConfig = {
+    apiKey: "AIzaSyCeX9Gs-8FMd_ihixkbp7cV_dn2ktaMuHw",
+    authDomain: "titin-and-luke-wedding.firebaseapp.com",
+    projectId: "titin-and-luke-wedding",
+    storageBucket: "titin-and-luke-wedding.firebasestorage.app",
+    messagingSenderId: "1035247407314",
+    appId: "1:1035247407314:web:7cba046c7117c852c95d0b",
+    measurementId: "G-TW5M9Z0B10"
+  };
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+  storage = firebase.storage();
+}
+
+/* ==========================================
    BILINGUAL TRANSLATION DICTIONARY
    ========================================== */
 const translations = {
@@ -592,6 +613,7 @@ function initLivePhotoHub() {
   const masonryGrid = document.getElementById("masonryGrid");
 
   let selectedFile = null;
+  let firestoreUnsubscribe = null;
 
   // Preset core photos to enrich the gallery
   const presetPhotos = [
@@ -617,23 +639,10 @@ function initLivePhotoHub() {
     }
   ];
 
-  // Render initial items + localstorage uploads
-  function renderGallery() {
+  // Helper function to build gallery list items
+  function populateGrid(photosList) {
     masonryGrid.innerHTML = "";
-    
-    // 1. Get uploaded photos from localStorage with error safety
-    let savedPhotos = [];
-    try {
-      savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
-      if (!Array.isArray(savedPhotos)) savedPhotos = [];
-    } catch (e) {
-      console.error("Local storage data corrupt. Resetting uploads registry.", e);
-      savedPhotos = [];
-      localStorage.removeItem("uploaded_photos");
-    }
-    const allPhotos = [...savedPhotos, ...presetPhotos];
-    
-    allPhotos.forEach(photo => {
+    photosList.forEach(photo => {
       const item = document.createElement("div");
       item.className = "masonry-item";
       
@@ -670,7 +679,89 @@ function initLivePhotoHub() {
     });
   }
 
+  // Render initial items + localstorage + live Firestore updates
+  function renderGallery() {
+    // If Firebase database is not loaded, fall back to offline local storage mock
+    if (!db) {
+      console.log("Firebase not loaded. Rendering offline mock database.");
+      let savedPhotos = [];
+      try {
+        savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
+        if (!Array.isArray(savedPhotos)) savedPhotos = [];
+      } catch (e) {
+        savedPhotos = [];
+      }
+      populateGrid([...savedPhotos, ...presetPhotos]);
+      return;
+    }
+
+    // Subscribe to real-time changes on Cloud Firestore
+    if (firestoreUnsubscribe) firestoreUnsubscribe();
+
+    firestoreUnsubscribe = db.collection("photos")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        const dbPhotos = [];
+        snapshot.forEach((doc) => {
+          dbPhotos.push(doc.data());
+        });
+        populateGrid([...dbPhotos, ...presetPhotos]);
+      }, (error) => {
+        console.error("Firestore listener error. Falling back to offline display.", error);
+        // Failover display
+        let savedPhotos = [];
+        try {
+          savedPhotos = JSON.parse(localStorage.getItem("uploaded_photos")) || [];
+          if (!Array.isArray(savedPhotos)) savedPhotos = [];
+        } catch (e) {
+          savedPhotos = [];
+        }
+        populateGrid([...savedPhotos, ...presetPhotos]);
+      });
+  }
+
   renderGallery();
+
+  // Compress Image Canvas Helper (Reduces bandwidth and storage limits)
+  function compressImage(file, callback) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        // Constraint boundaries
+        const MAX_WIDTH = 1200;
+        const MAX_HEIGHT = 1200;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Compress to blob JPEG (0.75 quality)
+        canvas.toBlob((blob) => {
+          callback(blob);
+        }, "image/jpeg", 0.75);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
 
   // Handle Drag & Drop
   if (dropzone) {
@@ -713,7 +804,7 @@ function initLivePhotoHub() {
       alert(translations[currentLang]["gallery.upload.error.type"]);
       return;
     }
-    // Enforce strict 2MB limit to prevent storage exhaustion
+    // Enforce strict 2MB limit
     if (file.size > 2 * 1024 * 1024) {
       alert(translations[currentLang]["gallery.upload.error.size"]);
       return;
@@ -749,36 +840,91 @@ function initLivePhotoHub() {
     previewName.textContent = "";
     previewSize.textContent = "";
     progressWrapper.style.display = "none";
-    progressFill.style.style = "0%";
+    progressFill.style.width = "0%";
     captionInput.value = "";
     uploaderNameInput.value = "";
   }
 
-  // Handle Form Submission / Mock Upload
+  // Handle Form Submission / Live Upload
   if (submitBtn) {
     submitBtn.addEventListener("click", () => {
       if (!selectedFile) return;
 
       progressWrapper.style.display = "block";
       submitBtn.disabled = true;
-      
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 10;
-        progressFill.style.width = `${progress}%`;
-        progressText.textContent = `${translations[currentLang]["gallery.uploading"]} (${progress}%)`;
-        
-        if (progress >= 100) {
-          clearInterval(interval);
-          
-          // Complete Mock Upload Process
-          saveUploadedImageToLocalStorage(
-            previewImg.src,
-            captionInput.value || "Shared Moment",
-            uploaderNameInput.value || "Anonymous Guest"
+
+      // 1. If Firebase is active, upload to Cloud Storage & save reference to Cloud Firestore
+      if (db && storage) {
+        progressText.textContent = `${translations[currentLang]["gallery.uploading"]} (0%)`;
+        progressFill.style.width = "0%";
+
+        // Compress image client-side to minimize storage footprint
+        compressImage(selectedFile, (compressedBlob) => {
+          const fileName = `${Date.now()}_${selectedFile.name.replace(/\s+/g, "_")}`;
+          const uploadTask = storage.ref().child(`photos/${fileName}`).put(compressedBlob, {
+            contentType: "image/jpeg"
+          });
+
+          uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) => {
+              const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              progressFill.style.width = `${percent}%`;
+              progressText.textContent = `${translations[currentLang]["gallery.uploading"]} (${percent}%)`;
+            },
+            (error) => {
+              console.error("Storage upload failed:", error);
+              alert(currentLang === "en" ? "Cloud upload failed. Please verify storage rules." : "Gagal mengunggah ke awan. Mohon periksa ketentuan penyimpanan.");
+              submitBtn.disabled = false;
+              progressWrapper.style.display = "none";
+            },
+            () => {
+              // Get download URL and write to Firestore
+              uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                const safeCaption = (captionInput.value || "Shared Moment").trim().substring(0, 80);
+                const safeUploader = (uploaderNameInput.value || "Anonymous Guest").trim().substring(0, 30);
+
+                db.collection("photos").add({
+                  url: downloadURL,
+                  caption: safeCaption,
+                  uploader: `By ${safeUploader}`,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(() => {
+                  setTimeout(() => {
+                    resetUploadWidget();
+                    submitBtn.disabled = false;
+                    successMsg.innerHTML = translations[currentLang]["gallery.upload.success"];
+                    successMsg.style.display = "block";
+                  }, 400);
+                }).catch((error) => {
+                  console.error("Firestore database write failed:", error);
+                  alert(currentLang === "en" ? "Database registration failed." : "Pendaftaran database gagal.");
+                  submitBtn.disabled = false;
+                  progressWrapper.style.display = "none";
+                });
+              });
+            }
           );
-        }
-      }, 150);
+        });
+      } else {
+        // 2. Offline Fallback: Mock intervals and save in local storage
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 10;
+          progressFill.style.width = `${progress}%`;
+          progressText.textContent = `${translations[currentLang]["gallery.uploading"]} (${progress}%)`;
+          
+          if (progress >= 100) {
+            clearInterval(interval);
+            
+            // Save mock data locally
+            saveUploadedImageToLocalStorage(
+              previewImg.src,
+              captionInput.value || "Shared Moment",
+              uploaderNameInput.value || "Anonymous Guest"
+            );
+          }
+        }, 150);
+      }
     });
   }
 
@@ -791,12 +937,10 @@ function initLivePhotoHub() {
       savedPhotos = [];
     }
 
-    // Limit custom photos stored in localStorage to 8 to prevent quota exhaustion
     if (savedPhotos.length >= 8) {
-      savedPhotos.pop(); // Remove the oldest custom upload (FIFO)
+      savedPhotos.pop();
     }
 
-    // Input length constraint and trimming (truncation safeguard)
     const safeCaption = (caption || "Shared Moment").trim().substring(0, 80);
     const safeUploader = (uploader || "Anonymous Guest").trim().substring(0, 30);
 
@@ -815,17 +959,15 @@ function initLivePhotoHub() {
       return;
     }
     
-    // Show success
     setTimeout(() => {
       resetUploadWidget();
       submitBtn.disabled = false;
       successMsg.innerHTML = translations[currentLang]["gallery.upload.success"];
       successMsg.style.display = "block";
-      
-      // Refresh Masonry grid
       renderGallery();
     }, 400);
   }
+}
 }
 
 /* ==========================================
