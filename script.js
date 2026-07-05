@@ -87,7 +87,48 @@ const translations = {
     "gallery.u.caption.3": "Stunning Anvaya Ocean View",
     "gallery.u.uploader.3": "By Dian Mubarokah",
     "gallery.u.caption.4": "The First Dance",
-    "gallery.u.uploader.4": "By James Henderson"
+    "gallery.u.uploader.4": "By James Henderson",
+
+    // Wedding Party Page
+    "nav.party": "The Party",
+    "party.title": "The Wedding Party",
+    "party.subtitle": "Our Closest Circle",
+    "party.groomsmen": "Groom's Side",
+    "party.bridesmaids": "Bride's Side",
+    "party.desc": "We are honored to have our closest friends and family stand by our side as we begin our life together. Click on any profile to get to know them.",
+    "party.relations.title": "Relation to Couple",
+    "party.facts.title": "Fun Fact",
+    "party.quotes.title": "Warm Message",
+
+    "party.role.james": "Best Man",
+    "party.relation.james": "Luke's Childhood Best Friend",
+    "party.fact.james": "Once lost his surfboard to a sea turtle in Uluwatu.",
+    "party.quote.james": "'So proud of Luke and Titin. Excited to celebrate their beautiful union in Bali!'",
+
+    "party.role.michael": "Groomsman",
+    "party.relation.michael": "Luke's Older Brother",
+    "party.fact.michael": "Can quote every line from classic British comedies.",
+    "party.quote.michael": "'Welcoming Titin into our family has been a joy. Here is to a lifetime of love!'",
+
+    "party.role.thomas": "Groomsman",
+    "party.relation.thomas": "Luke's University Roommate",
+    "party.fact.thomas": "Has traveled to 30 countries but still gets lost in his hometown.",
+    "party.quote.thomas": "'Luke finally found his matching puzzle piece. So happy for you both!'",
+
+    "party.role.dian": "Maid of Honour",
+    "party.relation.dian": "Titin's Eldest Sister",
+    "party.fact.dian": "An expert Balinese culinary home chef who makes the spiciest sambal.",
+    "party.quote.dian": "'Saya sangat bahagia melihat adik saya bersanding dengan Luke. Semoga langgeng!'",
+
+    "party.role.sarah": "Bridesmaid",
+    "party.relation.sarah": "Titin's High School Best Friend",
+    "party.fact.sarah": "Collects vintage batik textiles and reads historical novels.",
+    "party.quote.sarah": "'Titin has always been the kindest soul. Seeing her happy with Luke is a dream come true.'",
+
+    "party.role.ayu": "Bridesmaid",
+    "party.relation.ayu": "Titin's Favorite Cousin",
+    "party.fact.ayu": "A trained traditional Javanese dancer who loves modern K-Pop.",
+    "party.quote.ayu": "'Selamat menempuh hidup baru Luke dan Kak Titin! Let's dance the night away!'"
   },
   id: {
     // Navigation
@@ -174,7 +215,48 @@ const translations = {
     "gallery.u.caption.3": "Keindahan Samudera Anvaya",
     "gallery.u.uploader.3": "Oleh Dian Mubarokah",
     "gallery.u.caption.4": "Tarian Pertama Pengantin",
-    "gallery.u.uploader.4": "Oleh James Henderson"
+    "gallery.u.uploader.4": "Oleh James Henderson",
+
+    // Wedding Party Page
+    "nav.party": "Pendamping",
+    "party.title": "Pendamping Pengantin",
+    "party.subtitle": "Lingkar Terdekat Kami",
+    "party.groomsmen": "Pihak Pria",
+    "party.bridesmaids": "Pihak Wanita",
+    "party.desc": "Kami sangat terhormat didampingi oleh sahabat dan keluarga terdekat kami saat kami memulai lembaran baru bersama. Klik profil mereka untuk mengenal mereka lebih dekat.",
+    "party.relations.title": "Hubungan dengan Mempelai",
+    "party.facts.title": "Fakta Unik",
+    "party.quotes.title": "Pesan Hangat",
+
+    "party.role.james": "Pendamping Pria Utama (Best Man)",
+    "party.relation.james": "Sahabat Kecil Luke",
+    "party.fact.james": "Pernah kehilangan papan selancarnya karena diambil penyu di Uluwatu.",
+    "party.quote.james": "'Sangat bangga pada Luke dan Titin. Tak sabar merayakan pernikahan indah mereka di Bali!'",
+
+    "party.role.michael": "Pendamping Pria",
+    "party.relation.michael": "Kakak Kandung Luke",
+    "party.fact.michael": "Bisa menghafal setiap dialog dalam serial komedi klasik Inggris.",
+    "party.quote.michael": "'Sangat bahagia menyambut Titin ke dalam keluarga besar kami. Semoga bahagia selamanya!'",
+
+    "party.role.thomas": "Pendamping Pria",
+    "party.relation.thomas": "Teman Sekamar Kuliah Luke",
+    "party.fact.thomas": "Telah menjelajahi 30 negara tapi masih sering tersesat di kota kelahirannya sendiri.",
+    "party.quote.thomas": "'Luke akhirnya menemukan belahan jiwanya. Turut berbahagia untuk kalian berdua!'",
+
+    "party.role.dian": "Pendamping Wanita Utama (Maid of Honour)",
+    "party.relation.dian": "Kakak Sulung Titin",
+    "party.fact.dian": "Koki rumah ahli kuliner Bali yang membuat sambal paling pedas.",
+    "party.quote.dian": "'Saya sangat bahagia melihat adik saya bersanding dengan Luke. Semoga langgeng!'",
+
+    "party.role.sarah": "Pendamping Wanita",
+    "party.relation.sarah": "Sahabat Masa SMA Titin",
+    "party.fact.sarah": "Mengoleksi kain batik antik dan gemar membaca novel sejarah.",
+    "party.quote.sarah": "'Titin selalu berhati mulia. Melihatnya bahagia bersama Luke adalah mimpi yang menjadi kenyataan.'",
+
+    "party.role.ayu": "Pendamping Wanita",
+    "party.relation.ayu": "Sepupu Favorit Titin",
+    "party.fact.ayu": "Penari tradisional Jawa berbakat yang juga menyukai K-Pop modern.",
+    "party.quote.ayu": "'Selamat menempuh hidup baru Luke dan Kak Titin! Mari berdansa semalaman!'"
   }
 };
 
@@ -201,6 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (document.getElementById("masonryGrid")) {
     initLivePhotoHub();
+  }
+  if (document.querySelector(".party-container")) {
+    initWeddingParty();
   }
 
   // Scroll animations for standard elements
@@ -740,5 +825,73 @@ function initLivePhotoHub() {
       // Refresh Masonry grid
       renderGallery();
     }, 400);
+  }
+}
+
+/* ==========================================
+   WEDDING PARTY: INTERACTIVE DETAILS
+   ========================================== */
+function initWeddingParty() {
+  const cards = document.querySelectorAll(".party-card");
+  const bioCard = document.getElementById("partyActiveBio");
+  
+  if (cards.length === 0 || !bioCard) return;
+
+  // Active elements inside the bio card
+  const bioAvatar = document.getElementById("bioAvatar");
+  const bioName = document.getElementById("bioName");
+  const bioRole = document.getElementById("bioRole");
+  const bioRelation = document.getElementById("bioRelation");
+  const bioFact = document.getElementById("bioFact");
+  const bioQuote = document.getElementById("bioQuote");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      // 1. Remove active state from all cards
+      cards.forEach(c => c.classList.remove("active"));
+      
+      // 2. Add active state to clicked card
+      card.classList.add("active");
+
+      // 3. Get metadata from data-attributes
+      const name = card.getAttribute("data-name");
+      const img = card.querySelector("img").src;
+      const roleKey = card.getAttribute("data-role-key");
+      const relationKey = card.getAttribute("data-relation-key");
+      const factKey = card.getAttribute("data-fact-key");
+      const quoteKey = card.getAttribute("data-quote-key");
+
+      // 4. Slide out / Fade out bio card
+      bioCard.style.opacity = 0;
+      bioCard.style.transform = "translateY(15px)";
+
+      // 5. Update contents after short delay, then slide/fade back in
+      setTimeout(() => {
+        bioAvatar.src = img;
+        bioName.textContent = name;
+        
+        // Setup translation attributes and texts
+        bioRole.setAttribute("data-i18n", roleKey);
+        bioRole.textContent = translations[currentLang][roleKey] || roleKey;
+
+        bioRelation.setAttribute("data-i18n", relationKey);
+        bioRelation.textContent = translations[currentLang][relationKey] || relationKey;
+
+        bioFact.setAttribute("data-i18n", factKey);
+        bioFact.textContent = translations[currentLang][factKey] || factKey;
+
+        bioQuote.setAttribute("data-i18n", quoteKey);
+        bioQuote.textContent = translations[currentLang][quoteKey] || quoteKey;
+
+        // Slide in
+        bioCard.style.opacity = 1;
+        bioCard.style.transform = "translateY(0)";
+      }, 200);
+    });
+  });
+
+  // Trigger click on first card to populate initially on desktop
+  if (window.innerWidth > 992) {
+    cards[0].click();
   }
 }

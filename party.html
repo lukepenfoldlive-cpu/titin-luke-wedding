@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luke & Titin — The Wedding Party</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">LUKE<span>&</span>TITIN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="story.html" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="itinerary.html" data-i18n="nav.itinerary">Itinerary</a></li>
+          <li><a href="party.html" class="active" data-i18n="nav.party">The Party</a></li>
+          <li><a href="concierge.html" data-i18n="nav.concierge">Concierge</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Photo Hub</a></li>
+          <li><button class="lang-toggle" id="langToggleBtn">ID</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <div class="section-title-container fade-in visible">
+        <p class="section-subtitle" data-i18n="party.subtitle">Our Closest Circle</p>
+        <h1 class="section-title" data-i18n="party.title">The Wedding Party</h1>
+        <p class="section-intro" style="max-width: 700px; margin: 1.5rem auto 3rem; text-align: center;" data-i18n="party.desc">
+          We are honored to have our closest friends and family stand by our side as we begin our life together. Click on any profile to get to know them.
+        </p>
+      </div>
+
+      <div class="party-container">
+        
+        <!-- Left Pane: Party Cards Grid -->
+        <div class="party-left-column">
+          
+          <!-- Groom's Side Group -->
+          <div class="party-group fade-in visible">
+            <h2 class="party-group-title" data-i18n="party.groomsmen">Groom's Side</h2>
+            <div class="party-grid">
+              
+              <!-- James (Best Man) -->
+              <div class="party-card active" data-name="James" data-role-key="party.role.james" data-relation-key="party.relation.james" data-fact-key="party.fact.james" data-quote-key="party.quote.james">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/groomsman_avatar.jpg" alt="James">
+                </div>
+                <h3 class="party-card-name">James</h3>
+                <span class="party-card-role" data-i18n="party.role.james">Best Man</span>
+              </div>
+              
+              <!-- Michael (Groomsman) -->
+              <div class="party-card" data-name="Michael" data-role-key="party.role.michael" data-relation-key="party.relation.michael" data-fact-key="party.fact.michael" data-quote-key="party.quote.michael">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/groomsman_avatar.jpg" alt="Michael">
+                </div>
+                <h3 class="party-card-name">Michael</h3>
+                <span class="party-card-role" data-i18n="party.role.michael">Groomsman</span>
+              </div>
+              
+              <!-- Thomas (Groomsman) -->
+              <div class="party-card" data-name="Thomas" data-role-key="party.role.thomas" data-relation-key="party.relation.thomas" data-fact-key="party.fact.thomas" data-quote-key="party.quote.thomas">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/groomsman_avatar.jpg" alt="Thomas">
+                </div>
+                <h3 class="party-card-name">Thomas</h3>
+                <span class="party-card-role" data-i18n="party.role.thomas">Groomsman</span>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Bride's Side Group -->
+          <div class="party-group fade-in visible">
+            <h2 class="party-group-title" data-i18n="party.bridesmaids">Bride's Side</h2>
+            <div class="party-grid">
+              
+              <!-- Dian (Maid of Honour) -->
+              <div class="party-card" data-name="Dian" data-role-key="party.role.dian" data-relation-key="party.relation.dian" data-fact-key="party.fact.dian" data-quote-key="party.quote.dian">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/bridesmaid_avatar.jpg" alt="Dian">
+                </div>
+                <h3 class="party-card-name">Dian</h3>
+                <span class="party-card-role" data-i18n="party.role.dian">Maid of Honour</span>
+              </div>
+              
+              <!-- Sarah (Bridesmaid) -->
+              <div class="party-card" data-name="Sarah" data-role-key="party.role.sarah" data-relation-key="party.relation.sarah" data-fact-key="party.fact.sarah" data-quote-key="party.quote.sarah">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/bridesmaid_avatar.jpg" alt="Sarah">
+                </div>
+                <h3 class="party-card-name">Sarah</h3>
+                <span class="party-card-role" data-i18n="party.role.sarah">Bridesmaid</span>
+              </div>
+              
+              <!-- Ayu (Bridesmaid) -->
+              <div class="party-card" data-name="Ayu" data-role-key="party.role.ayu" data-relation-key="party.relation.ayu" data-fact-key="party.fact.ayu" data-quote-key="party.quote.ayu">
+                <div class="party-avatar-wrapper">
+                  <img src="assets/bridesmaid_avatar.jpg" alt="Ayu">
+                </div>
+                <h3 class="party-card-name">Ayu</h3>
+                <span class="party-card-role" data-i18n="party.role.ayu">Bridesmaid</span>
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right Pane: Sticky Bio Panel -->
+        <div class="party-bio-sticky fade-in visible">
+          <div class="glass-panel party-active-bio" id="partyActiveBio">
+            
+            <div class="bio-header">
+              <img id="bioAvatar" class="bio-avatar-large" src="assets/groomsman_avatar.jpg" alt="Active Profile">
+              <div class="bio-title-meta">
+                <h2 id="bioName">James</h2>
+                <span id="bioRole" class="bio-badge" data-i18n="party.role.james">Best Man</span>
+              </div>
+            </div>
+            
+            <div class="bio-body">
+              
+              <div class="bio-detail-group">
+                <p class="bio-label" data-i18n="party.relations.title">Relation to Couple</p>
+                <p id="bioRelation" class="bio-value" data-i18n="party.relation.james">Luke's Childhood Best Friend</p>
+              </div>
+              
+              <div class="bio-detail-group">
+                <p class="bio-label" data-i18n="party.facts.title">Fun Fact</p>
+                <p id="bioFact" class="bio-value" data-i18n="party.fact.james">Once lost his surfboard to a sea turtle in Uluwatu.</p>
+              </div>
+              
+              <div class="bio-quote-wrapper">
+                <p class="bio-label" data-i18n="party.quotes.title">Warm Message</p>
+                <p id="bioQuote" class="bio-quote" data-i18n="party.quote.james">"So proud of Luke and Titin. Excited to celebrate their beautiful union in Bali!"</p>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-title">Luke & Titin</p>
+    <p class="footer-subtitle">22.08.2027 • The Anvaya Bali</p>
+    <p class="footer-credits">Crafted with Love for our Families & Friends</p>
+  </footer>
+
+  <!-- Script bindings -->
+  <script src="script.js"></script>
+</body>
+</html>
