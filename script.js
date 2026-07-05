@@ -968,7 +968,6 @@ function initLivePhotoHub() {
     }, 400);
   }
 }
-}
 
 /* ==========================================
    WEDDING PARTY: INTERACTIVE DETAILS
